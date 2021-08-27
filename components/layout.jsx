@@ -11,7 +11,7 @@ const Layout = ({children, PageTitle}) => {
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
             </Head>
             <main >
-                <h1>ReactionTime<span>{/* add styling to the .tech*/}.tech</span></h1>
+                <h1>{PageTitle}<span>{/* add styling to the .tech*/}.tech</span></h1>
                 <div>
                     <nav>
                         <ul>
