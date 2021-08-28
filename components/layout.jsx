@@ -1,57 +1,32 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import Sidebar from './sideBar'
+import {
+    container,
+    highlight,
+    nav_container,
+} from './layout.module.css'
 
 const Layout = ({children, PageTitle}) => {
     return(
-        <div>
+        <main>
             <Head>
                 <title>{PageTitle}</title>
                 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet"></link>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
             </Head>
-            <main >
-                <h1>{PageTitle}<span>{/* add styling to the .tech*/}.tech</span></h1>
-                <div>
+            <div className={container}>
+                <h1>{PageTitle}<span className={highlight}>{/* add styling to the .tech*/}.tech</span></h1>
+                <header className={nav_container}>
                     <nav>
-                        <ul>
-                            {/* Add Links to each one (tick )*/}
-                            <li className=''>
-                                <Link href='/'>
-                                    Test
-                                </Link>
-                            </li>
-                            <li className=''>
-                                <Link href='/'>
-                                    Leaderboard
-                                </Link>
-                            </li>
-                            <li className=''>
-                                <Link href='/'>
-                                    Discord
-                                </Link>
-                            </li>
-                            <li className='text-white'>
-                                <Link href='/'>
-                                    About
-                                </Link>
-                            </li>
-                            <li className='text-white'>
-                                <Link href='/'>
-                                    Log In
-                                </Link>
-                            </li>
-                            <li className=''>
-                                <Link href='/'>
-                                    Sign Up
-                                </Link>
-                            </li>
-                        </ul>
+                        {/* Add Links to each one (tick )*/}
+                        <Sidebar>
+                        </Sidebar>
                     </nav>
-                </div>
-            </main>
+                </header>
+            </div>
             {children}
-        </div>  
+        </main>  
     )
 }
 
