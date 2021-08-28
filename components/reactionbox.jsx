@@ -1,7 +1,10 @@
 import { 
     test_container,
     reac_container,
-    test_bar
+    test_bar,
+    prev_reac,
+    curr_reac,
+    reset_button,
 } from './reactionbox.module.css'
 
 const Reactionbox = () => {
