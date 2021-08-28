@@ -1,0 +1,23 @@
+.non-active{
+    color: #d6d6d6
+}
+.active{
+    color: #ff0000;
+}
+
+.nav_links {
+    list-style-type: none;
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+    /* It will have something like a colour shift or something */
+}
