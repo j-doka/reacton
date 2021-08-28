@@ -1,0 +1,28 @@
+.test_container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 51rem;
+    margin: auto;
+    border-radius: 4px;
+    position: relative;
+}
+
+.reac_container{
+    overflow: hidden;
+    box-sizing: border-box;
+    width: min(50rem, 100%);
+    user-select: none;
+    background-color: #2a2a2a;
+    line-height: 2.4rem;
+    height: 7.8rem;
+    padding: 16rem 2.25rem;
+}
+
+.test_bar{
+    display: flex;
+    flex-wrap: wrap;
+    margin: .5rem auto;
+    width: 100%;
+    justify-content: center;
+}
