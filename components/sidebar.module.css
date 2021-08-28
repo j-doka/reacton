@@ -2,7 +2,13 @@
     color: #d6d6d6
 }
 .active{
-    color: #ff0000;
+    background-color: #2a2a2a;
+    padding: 9px 25px;
+    border: none;
+    /* maybe 4px */
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
 
 .nav_links {
