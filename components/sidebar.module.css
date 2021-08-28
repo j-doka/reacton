@@ -6,7 +6,7 @@
     padding: 9px 25px;
     border: none;
     /* maybe 4px */
-    border-radius: 50px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
@@ -25,5 +25,6 @@
 }
 
 .nav_links li a:hover {
-    /* It will have something like a colour shift or something */
+    color: #4ec6cf;
+    transition: all 0.3s ease 0s;
 }
