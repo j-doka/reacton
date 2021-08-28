@@ -26,10 +26,10 @@ const Sidebar = () => {
                     <li key={index}>
                         <Link href={item.path}>
                             <a
-                                className={`${router.pathname === item.path
-                                    ? {active}
-                                    : {non_active}
-                                    }`}
+                                className={router.pathname === item.path
+                                    ? active
+                                    : non_active
+                                    }
                             >
                                 {item.title}
                             </a>
