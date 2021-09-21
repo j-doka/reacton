@@ -23,14 +23,37 @@
 
 .test_bar{
     display: flex;
-    flex-wrap: wrap;
     margin: .5rem auto;
-    width: 100%;
     justify-content: center;
 }
 
-.prev_reac{
+.bar_item{
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 3.625rem;
+    padding: 0;
+    /* padding: .9rem 2rem; */
+    margin: .5rem;
     background-color: #2a2a2a;
-    width: 50px;
-    height: 50px;
+    border-radius: 4px;
+    display: flex;
+}
+
+.reset_button{
+    justify-content: center;
+    width: 8rem;
+    height: 3.625rem;
+    margin: .5rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #2a2a2a;
+    transition: all 0.8s ease 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reset_button:hover{
+    background-color: deepskyblue;
 }
