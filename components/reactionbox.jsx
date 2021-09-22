@@ -8,6 +8,8 @@ import {
     test_bar,
     bar_item,
     reset_button,
+    readyState,
+    goState
 } from './reactionbox.module.css'
 
 class Reactionbox extends Component {
@@ -17,14 +19,16 @@ class Reactionbox extends Component {
     state = {
         timerOn: false,
         timerStart: 0,
-        timerTime: 0
+        timerTime: 0,
+        ready: false,
+        go: false // logic 
     }
 
     startTimer = () => {
         this.setState({
             timerOn: true,
             timerTime: this.state.timerTime,
-            timerStart: Date.now() - this.state.timerTime           
+            timerStart: Date.now() - this.state.timerTime,      
         })
         this.timer = setInterval(() => {
             this.setState({
@@ -46,9 +50,20 @@ class Reactionbox extends Component {
         clearInterval(this.timer)
     }
 
+    
+
+
+    readyState = () => {
+        this.setState({ready: true})
+        
+    }
+
+    
     render(){
 
         let { timerTime } = this.state
+        let { ready } = this.state
+        let { go } = this.state // responislbe for setting image to green
         let centiseconds = ("0" + (Math.floor(timerTime / 10) % 100)).slice(-2)
         let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2)
         let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2)
@@ -57,16 +72,16 @@ class Reactionbox extends Component {
         return(
             <div className={test_container}>
             
-                <button className={reac_container} onClick={this.startTimer}>
-                    <Image src={Lightning} alt="Lightning Symbol" />
+                <button className={ ready === true ? readyState : reac_container} onClick={ready === true ? this.startTimer : this.readyState} >
+                    {ready == true ? '' : <Image src={Lightning} alt="Lightning Symbol" />}
                 </button>
                 <div className={test_bar}>
                     <div className={bar_item}>
                         {/* Should contain previous Speed or '-' to signify nothing has been recorded yet*/}
                     </div>
                     <div className={bar_item}>
-                        <div className="Stopwatch-display">
-                            {console.log(timerTime, Date.now(), (Date.now() - timerTime))}
+                        <div>
+                            {console.log(timerTime, ready, go)}
                             {hours} : {minutes} : {seconds} : {centiseconds}
                         </div>
                     </div>
