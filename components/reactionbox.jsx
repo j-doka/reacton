@@ -66,8 +66,8 @@ class Reactionbox extends Component {
                     {/* Should contain previous Speed or '-' to signify nothing has been recorded yet*/}
                 </div>
                 <div className={bar_item}>
-                    <div>
-                        <div>Stopwatch</div>
+                    <div className="Stopwatch-display">
+                        {hours} : {minutes} : {seconds} : {centiseconds}
                     </div>
                 </div>
                 <button className={reset_button}>
