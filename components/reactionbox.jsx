@@ -22,7 +22,7 @@ class Reactionbox extends Component {
 
     startTimer = () => {
         this.setState({
-            timerOn: True,
+            timerOn: true,
             timerTime: this.state.timerTime,
             timerStart: Date.now() - this.state.timerTime           
         })
@@ -34,22 +34,21 @@ class Reactionbox extends Component {
     }
 
     stopTimer = () => {
-        this.setState({ timerOn: flase })
+        this.setState({ timerOn: false })
         clearInterval(this.timer)
     }
-
-    
 
     resetTimer = () => {
         this.setState({
             timerStart: 0,
             timerTime: 0
         })
+        clearInterval(this.timer)
     }
 
     render(){
 
-        const { timerTime } = this.state
+        let { timerTime } = this.state
         let centiseconds = ("0" + (Math.floor(timerTime / 10) % 100)).slice(-2)
         let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2)
         let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2)
@@ -58,23 +57,24 @@ class Reactionbox extends Component {
         return(
             <div className={test_container}>
             
-            <div className={reac_container}>
-                <Image src={Lightning} alt="Lightning Symbol" />
-            </div>
-            <div className={test_bar}>
-                <div className={bar_item}>
-                    {/* Should contain previous Speed or '-' to signify nothing has been recorded yet*/}
-                </div>
-                <div className={bar_item}>
-                    <div className="Stopwatch-display">
-                        {hours} : {minutes} : {seconds} : {centiseconds}
-                    </div>
-                </div>
-                <button className={reset_button}>
-                    <Image width={45} height={45} src={Refresh} alt="Refresh Symbol"/>
+                <button className={reac_container} onClick={this.startTimer}>
+                    <Image src={Lightning} alt="Lightning Symbol" />
                 </button>
+                <div className={test_bar}>
+                    <div className={bar_item}>
+                        {/* Should contain previous Speed or '-' to signify nothing has been recorded yet*/}
+                    </div>
+                    <div className={bar_item}>
+                        <div className="Stopwatch-display">
+                            {console.log(timerTime, Date.now(), (Date.now() - timerTime))}
+                            {hours} : {minutes} : {seconds} : {centiseconds}
+                        </div>
+                    </div>
+                    <button className={reset_button} onClick={this.resetTimer}>
+                        <Image width={30} height={30} src={Refresh} alt="Refresh Symbol"/>
+                    </button>
+                </div>
             </div>
-        </div>
         )
     }
 }
