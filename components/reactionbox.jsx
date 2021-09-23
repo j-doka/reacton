@@ -21,7 +21,16 @@ class Reactionbox extends Component {
         timerStart: 0,
         timerTime: 0,
         ready: false,
-        go: false // logic 
+        go: false, // logic
+    }
+
+    readyState = () => {
+        this.setState({ready: true})
+        setTimeout(() => {
+            this.setState({
+                go: true
+            })
+        }, Math.random() * 10000)
     }
 
     startTimer = () => {
@@ -50,15 +59,11 @@ class Reactionbox extends Component {
         clearInterval(this.timer)
     }
 
-    
-
-
-    readyState = () => {
-        this.setState({ready: true})
+    goState = () => {
+        this.setState({go: true})
         
     }
 
-    
     render(){
 
         let { timerTime } = this.state
@@ -68,20 +73,18 @@ class Reactionbox extends Component {
         let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2)
         let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2)
         let hours = ("0" + Math.floor(timerTime / 3600000)).slice(-2)
-        
+
         return(
             <div className={test_container}>
-            
-                <button className={ ready === true ? readyState : reac_container} onClick={ready === true ? this.startTimer : this.readyState} >
+                <button className={ go === true ? goState : ready === true ? readyState : reac_container} onClick={go === true ? this.stopTimer : this.readyState } >
                     {ready == true ? '' : <Image src={Lightning} alt="Lightning Symbol" />}
                 </button>
                 <div className={test_bar}>
                     <div className={bar_item}>
                         {/* Should contain previous Speed or '-' to signify nothing has been recorded yet*/}
                     </div>
-                    <div className={bar_item}>
+                    <div className={bar_item} onLoad={go === true ? '' : this.startTimer}>
                         <div>
-                            {console.log(timerTime, ready, go)}
                             {hours} : {minutes} : {seconds} : {centiseconds}
                         </div>
                     </div>
@@ -95,3 +98,7 @@ class Reactionbox extends Component {
 }
 
 export default Reactionbox
+
+// reaction time - time it takes for the user to click on green
+// so starttime - when go value is true
+// endTime - when clicked. 
