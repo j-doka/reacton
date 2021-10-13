@@ -15,6 +15,7 @@
     line-height: 2.4rem;
     border-radius: 6px;
     background-color: #2a2a2a;
+    transition: all 0.2s ease 0s;
     border: none;
     height: 32rem;
     display: flex;
@@ -54,6 +55,22 @@
     justify-content: center;
 }
 
+.blueState{
+    overflow: hidden;
+    box-sizing: border-box;
+    width: min(50rem, 100%);
+    user-select: none;
+    line-height: 2.4rem;
+    border-radius: 6px;
+    background-color: #4ec6cf;
+    transition: all 0.2s ease 0s;
+    border: none;
+    height: 32rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .test_bar{
     display: flex;
     margin: .5rem auto;
@@ -69,8 +86,10 @@
     /* padding: .9rem 2rem; */
     margin: .5rem;
     background-color: #2a2a2a;
+    transition: all 0.2s ease 0s;
     border-radius: 4px;
     display: flex;
+    /* I want to transition between two colours when updated */
 }
 
 .reset_button{
