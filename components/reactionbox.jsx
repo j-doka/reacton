@@ -9,103 +9,95 @@ import {
     bar_item,
     reset_button,
     readyState,
-    goState
+    goState,
+    blueState
 } from './reactionbox.module.css'
 
 class Reactionbox extends Component {
     state = {
+        prev: [],
+        previ: false,
         timerOn: false,
         timerStart: 0,
-        timerTime: 0,
+        timerEnd: 0,
         auto: false,
         ready: false,
-        go: false, // logic
+        go: false,
+        disabled: false,
+        reacted: false, // logic
     }
 
     readyState = () => {
-        this.setState({ready: true})
+        this.setState({
+            ready: true,
+            disabled: true
+        })
         setTimeout(() => {
             this.setState({
-                go: true
+                go: true,
+                timerStart: Date.now(),
+                disabled: false
             })
         }, Math.random() * 10000)
     }
 
-    startTimer = () => {
-        this.setState({
-            timerOn: true,
-            timerTime: this.state.timerTime,
-            timerStart: Date.now() - this.state.timerTime,
-            auto: true    
-        })
-        this.timer = setInterval(() => {
-            this.setState({
-                timerTime: Date.now() - this.state.timerStart
-            })
-        }, 10)
-    }
-
     stopTimer = () => {
-        this.setState({ timerOn: false })
-        clearInterval(this.timer)
+        this.setState({ 
+            timerOn: false,
+            timerEnd: Date.now(),
+            reacted: true
+         })
     }
 
     resetTimer = () => {
         this.setState({
-            timerStart: 0,
-            timerTime: 0,
             auto: false,
             ready: false,
-            go: false
+            go: false,
+            reacted: false,
+            previ: this.state.prev[this.state.prev.length - 1]
         })
-        clearInterval(this.timer)
-    }
 
-    goState = () => {
-        this.setState({go: true})
-        
-    }
-
-    componentDidMount() {
-        setInterval(() => {
-            if (this.state.go === true){
-                document.getElementById("ready").click()
-            }
-        }, 5) 
     }
 
     render(){
-
-        let { timerTime } = this.state
+        let { disabled } = this.state
+        let { prev } = this.state
+        let { previ } = this.state
+        let { timerStart } = this.state
+        let { timerEnd } = this.state
         let { ready } = this.state
+        let { reacted } = this.state
         let { go } = this.state // responislbe for setting image to green
         let { auto } = this.state 
         let goTime = null
-        let centiseconds = ("0" + (Math.floor(timerTime / 10) % 100)).slice(-2)
-        let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2)
-        let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2)
-        let hours = ("0" + Math.floor(timerTime / 3600000)).slice(-2)
-
-        // I got a bit stuck, we need it to measure the amount of time it took to react to the green box!
-        // how do we do that!
 
         if (go === true){
             goTime = 'ready'
         }
 
+        let timerDelt = timerEnd - timerStart
+        prev.push(timerDelt)
+
+        if (reacted){
+            disabled = true
+        }
+
+        
+
         return(
             <div className={test_container}>
-                <button id={goTime} className={ go === true ? goState : ready === true ? readyState : reac_container} onClick={go === true ? this.startTimer : auto === true ? this.stopTimer : this.readyState } >
+                <button disabled={disabled} id={goTime} className={ reacted === true ? blueState : go === true ? goState : ready === true ? readyState : reac_container} onClick={go === true ? this.stopTimer : this.readyState } >
                     {ready == true ? '' : <Image src={Lightning} alt="Lightning Symbol" />}
                 </button>
                 <div className={test_bar}>
                     <div className={bar_item}>
-                        {/* Should contain previous Speed or '-' to signify nothing has been recorded yet*/}
+                        {previ ? previ + 'ms' : '-'}
                     </div>
                     <div className={bar_item} >
                         <div>
-                            {console.log(timerTime, ready, go, goTime, auto)}
-                            {hours} : {minutes} : {seconds} : {centiseconds}
+                            {console.log(ready, go, goTime, auto, timerStart, timerEnd, prev, previ)}
+                            {reacted === true ? timerDelt + 'ms' : '-'}
                         </div>
                     </div>
                     <button className={reset_button} onClick={this.resetTimer}>
