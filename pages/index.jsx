@@ -5,8 +5,8 @@ const IndexPage = () => {
   return (
     <Layout PageTitle='Reacton'>
       <Reactionbox>
-
       </Reactionbox>
+      
     </Layout>
   )
 }
