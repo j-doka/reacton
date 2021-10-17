@@ -12,6 +12,8 @@ import {
     goState,
     blueState
 } from './reactionbox.module.css'
+import { Line } from 'react-chartjs-2';
+
 
 class Reactionbox extends Component {
     state = {
@@ -35,6 +37,7 @@ class Reactionbox extends Component {
         setTimeout(() => {
             this.setState({
                 go: true,
+                ready: false,
                 timerStart: Date.now(),
                 disabled: false
             })
@@ -55,7 +58,8 @@ class Reactionbox extends Component {
             ready: false,
             go: false,
             reacted: false,
-            previ: this.state.prev[this.state.prev.length - 1]
+            previ: this.state.prev[this.state.prev.length - 1],
+            disabled: false
         })
 
     }
@@ -83,34 +87,70 @@ class Reactionbox extends Component {
             disabled = true
         }
 
+        const state = {
+            labels: ['January', 'February', 'March',
+                'April', 'May'],
+            datasets: [
+                {
+                    label: 'Rainfall',
+                    fill: false,
+                    lineTension: 0.5,
+                    backgroundColor: 'rgba(75,192,192,1)',
+                    borderColor: 'rgba(0,0,0,1)',
+                    borderWidth: 2,
+                    data: this.state.prev
+                }
+            ]
+        }
+
         
 
         return(
-            <div className={test_container}>
-                <button disabled={disabled} id={goTime} className={ reacted === true ? blueState : go === true ? goState : ready === true ? readyState : reac_container} onClick={go === true ? this.stopTimer : this.readyState } >
-                    {ready == true ? '' : <Image src={Lightning} alt="Lightning Symbol" />}
-                </button>
-                <div className={test_bar}>
-                    <div className={bar_item}>
-                        {previ ? previ + 'ms' : '-'}
-                    </div>
-                    <div className={bar_item} >
-                        <div>
-                            {console.log(ready, go, goTime, auto, timerStart, timerEnd, prev, previ)}
-                            {reacted === true ? timerDelt + 'ms' : '-'}
-                        </div>
-                    </div>
-                    <button className={reset_button} onClick={this.resetTimer}>
-                        <Image width={30} height={30} src={Refresh} alt="Refresh Symbol"/>
+            <div>
+                <div className={test_container}>
+                    <button disabled={disabled} id={goTime} className={reacted === true ? blueState : go === true ? goState : ready === true ? readyState : reac_container} onClick={go === true ? this.stopTimer : this.readyState} >
+                        {reacted || go || auto || ready == true ? '' : <Image src={Lightning} alt="Lightning Symbol" />}
                     </button>
+                    <div className={test_bar}>
+                        <div className={bar_item}>
+                            {previ ? previ + 'ms' : '-'}
+                        </div>
+                        <div className={bar_item} >
+                            <div>
+                                {reacted === true ? timerDelt + 'ms' : '-'}
+                            </div>
+                        </div>
+                        <button className={reset_button} onClick={this.resetTimer}>
+                            <Image width={30} height={30} src={Refresh} alt="Refresh Symbol" />
+                        </button>
+                    </div>
+
+                    {console.log(ready, go, goTime, auto, timerStart, timerEnd, prev, previ)}
                 </div>
+                <div>
+                    <Line
+                        data={state}
+                        options={{
+                            title: {
+                                display: true,
+                                text: 'Average Reaction Time',
+                                fontSize: 20
+                            },
+                            legend: {
+                                display: true,
+                                position: 'right'
+                            }
+                        }}
+                    />
+                </div>
+
             </div>
+
         )
     }
 }
 
 export default Reactionbox
 
-// reaction time - time it takes for the user to click on green
-// so starttime - when go value is true
-// endTime - when clicked. 
+
+/* chatJS */
