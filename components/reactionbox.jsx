@@ -75,17 +75,21 @@ class Reactionbox extends Component {
         let { go } = this.state // responislbe for setting image to green
         let { auto } = this.state 
         let goTime = null
+        let timerDelt
 
         if (go === true){
             goTime = 'ready'
         }
 
-        let timerDelt = timerEnd - timerStart
-        prev.push(timerDelt)
+        
 
         if (reacted){
             disabled = true
+            timerDelt = timerEnd - timerStart
+            prev.push(timerDelt)
         }
+
+        // This is gets rid of most anonmylous results, but it creates duplicates, I am not sure why tho. 
 
         const state = {
             labels: ['January', 'February', 'March',
@@ -125,7 +129,7 @@ class Reactionbox extends Component {
                         </button>
                     </div>
 
-                    {console.log(ready, go, goTime, auto, timerStart, timerEnd, prev, previ)}
+                    {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, prev, previ)}
                 </div>
                 <div>
                     <Line
