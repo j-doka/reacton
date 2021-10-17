@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Component } from 'react'
 import Lightning from '../public/icons8-lightning-bolt-96.png'
 import Refresh from '../public/icons8-refresh-480.png'
-import { 
+import {
     test_container,
     reac_container,
     test_bar,
@@ -26,7 +26,9 @@ class Reactionbox extends Component {
         ready: false,
         go: false,
         disabled: false,
-        reacted: false, // logic
+        reacted: false,
+        trys: [],
+        tries: 0 // logic
     }
 
     readyState = () => {
@@ -45,11 +47,11 @@ class Reactionbox extends Component {
     }
 
     stopTimer = () => {
-        this.setState({ 
+        this.setState({
             timerOn: false,
             timerEnd: Date.now(),
             reacted: true
-         })
+        })
     }
 
     resetTimer = () => {
@@ -59,12 +61,14 @@ class Reactionbox extends Component {
             go: false,
             reacted: false,
             previ: this.state.prev[this.state.prev.length - 1],
-            disabled: false
+            disabled: false,
+            tries: this.state.tries += 1
         })
 
+        this.state.trys.push(this.state.tries)
     }
 
-    render(){
+    render() {
         let { disabled } = this.state
         let { prev } = this.state
         let { previ } = this.state
@@ -73,43 +77,45 @@ class Reactionbox extends Component {
         let { ready } = this.state
         let { reacted } = this.state
         let { go } = this.state // responislbe for setting image to green
-        let { auto } = this.state 
+        let { auto } = this.state
+        let { tries } = this.state
+        let { trys } = this.state
         let goTime = null
         let timerDelt
 
-        if (go === true){
+        if (go === true) {
             goTime = 'ready'
         }
 
-        
-
-        if (reacted){
+        if (reacted) {
             disabled = true
             timerDelt = timerEnd - timerStart
             prev.push(timerDelt)
+
         }
+
+
 
         // This is gets rid of most anonmylous results, but it creates duplicates, I am not sure why tho. 
 
         const state = {
-            labels: ['January', 'February', 'March',
-                'April', 'May'],
+            labels: trys, // tries
             datasets: [
                 {
-                    label: 'Rainfall',
+                    label: 'Reaction',
                     fill: false,
                     lineTension: 0.5,
                     backgroundColor: 'rgba(75,192,192,1)',
-                    borderColor: 'rgba(0,0,0,1)',
+                    borderColor: 'rgba(78, 172, 207, 100)',
                     borderWidth: 2,
-                    data: this.state.prev
+                    data: [...new Set(this.state.prev)]
                 }
             ]
         }
 
-        
 
-        return(
+
+        return (
             <div>
                 <div className={test_container}>
                     <button disabled={disabled} id={goTime} className={reacted === true ? blueState : go === true ? goState : ready === true ? readyState : reac_container} onClick={go === true ? this.stopTimer : this.readyState} >
@@ -129,9 +135,9 @@ class Reactionbox extends Component {
                         </button>
                     </div>
 
-                    {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, prev, previ)}
+                    {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, [...new Set(this.state.prev)], previ, trys, tries)}
                 </div>
-                <div>
+                <div >
                     <Line
                         data={state}
                         options={{
