@@ -9,11 +9,8 @@ import {
 
 const menu = [
     { title: 'Test', path: '/' },
-    { title: 'Leaderboard', path: '' },
-    { title: 'Discord', path: '' },
-    { title: 'About', path: '' },
-    { title: 'Log In', path: '' },
-    { title: 'Sign Up', path: '' }
+    { title: 'About', path: '/about' },
+    { title: 'Log In', path: '/login' },
 ]
 
 const Sidebar = () => {
