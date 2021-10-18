@@ -10,7 +10,10 @@ import {
     reset_button,
     readyState,
     goState,
-    blueState
+    blueState,
+    chart,
+    test_chart_container,
+    test_chart_wrapper,
 } from './reactionbox.module.css'
 import { Line } from 'react-chartjs-2';
 
@@ -94,8 +97,6 @@ class Reactionbox extends Component {
 
         }
 
-
-
         // This is gets rid of most anonmylous results, but it creates duplicates, I am not sure why tho. 
 
         const state = {
@@ -112,8 +113,6 @@ class Reactionbox extends Component {
                 }
             ]
         }
-
-
 
         return (
             <div>
@@ -137,23 +136,26 @@ class Reactionbox extends Component {
 
                     {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, [...new Set(this.state.prev)], previ, trys, tries)}
                 </div>
-                <div >
-                    <Line
-                        data={state}
-                        options={{
-                            title: {
-                                display: true,
-                                text: 'Average Reaction Time',
-                                fontSize: 20
-                            },
-                            legend: {
-                                display: true,
-                                position: 'right'
-                            }
-                        }}
-                    />
+                <div className={test_chart_container}>
+                    <div className={test_chart_wrapper}>
+                        <div className={chart}>
+                            <Line
+                                data={state}
+                                options={{
+                                    title: {
+                                        display: true,
+                                        text: 'Average Reaction Time',
+                                        fontSize: 20
+                                    },
+                                    legend: {
+                                        display: true,
+                                        position: 'right'
+                                    }
+                                }}
+                            />
+                        </div>
+                    </div>
                 </div>
-
             </div>
 
         )

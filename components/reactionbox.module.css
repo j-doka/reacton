@@ -109,3 +109,21 @@
 .reset_button:hover{
     background-color: deepskyblue;
 }
+
+.chart{
+    width: 813px;
+    height: 406px;
+    margin: auto;
+    padding: 10px;
+}
+/*  
+.test_chart_container{
+    margin: 3rem auto 5rem;
+}
+
+.test_chart_wrapper{
+    width: 100%;
+    transition: 80ms;
+    position: relative;
+
+} */
