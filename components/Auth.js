@@ -8,7 +8,9 @@ export default function Auth() {
     const handleLogin = async (email) => {
         try {
             setLoading(true)
-            const { error } = await supabase.auth.signIn({ email })
+            const { error } = await supabase.auth.signIn({
+                 provider: 'discord'
+            })
             if (error) throw error
             alert('Check your email for the login link!')
         } catch (error) {
@@ -22,16 +24,7 @@ export default function Auth() {
         <div className="row flex flex-center">
             <div className="col-6 form-widget">
                 <h1 className="header">Supabase + Next.js</h1>
-                <p className="description">Sign in via magic link with your email below</p>
-                <div>
-                    <input
-                        className="inputField"
-                        type="email"
-                        placeholder="Your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
+                <p className="description">Sign in via Discord below</p>
                 <div>
                     <button
                         onClick={(e) => {
@@ -41,7 +34,7 @@ export default function Auth() {
                         className="button block"
                         disabled={loading}
                     >
-                        <span>{loading ? 'Loading' : 'Send magic link'}</span>
+                        <span>{loading ? 'Loading' : 'Sign In'}</span>
                     </button>
                 </div>
             </div>
