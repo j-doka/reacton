@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_section{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    
+}
+
+.input_container{
+    margin-bottom: -.5rem;
+    outline: 0;
+    transition: .2s;
+    margin: .5rem 0;
+    width: 22rem;
+    background-color: #2a2a2a;
+    border: 2px solid #2a2a2a;
+    padding: 1rem 1.25rem;
+    font: inherit;
+    border-radius: 4px;
+}
+
+.logBotton{
+    margin: 3rem .5rem;
+    display: inline;
+    background-color: #cf4e4e;
+    width: 11rem;
+    height: 2.5rem;
+    border: 2px solid #cf4e4ec7;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: .25s;
+    transform: scale(1);
+    color: inherit;
+    font: inherit;
+}
+
+.logBotton:hover{
+    background-color: #cf4e4ece;
+}
