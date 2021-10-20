@@ -5,6 +5,7 @@
     max-width: 51rem;
     margin: auto;
     position: relative;
+    transition: all 0.2s ease 0s;
 }
 
 .reac_container{
