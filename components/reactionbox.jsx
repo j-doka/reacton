@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Component } from 'react'
 import Lightning from '../public/icons8-lightning-bolt-96.png'
 import Refresh from '../public/icons8-refresh-480.png'
+import { supabase } from '../utils/supabaseClient'
 import {
     test_container,
     reac_container,
@@ -25,13 +26,50 @@ class Reactionbox extends Component {
         timerOn: false,
         timerStart: 0,
         timerEnd: 0,
+        timerDelt: 0,
         auto: false,
         ready: false,
         go: false,
         disabled: false,
         reacted: false,
         trys: [],
-        tries: 0 // logic
+        tries: 0,
+        setloading: false,
+        error: false,
+        users: null
+    }
+
+    async update({id, username, timerDelt, tries}) {
+
+        this.setState({ isLoading: true });
+        let updates = {
+            id,
+            username,
+            timerDelt,
+            tries,
+            updated_at: new Date(),
+        }
+
+        try {
+            const { error, data} = await supabase
+                .from('profiles')
+                .insert([updates], {
+                    returning: 'minimal',
+                })
+            if (error) {
+                throw error;
+            }
+            this.setState({
+                users: data,
+                isLoading: false
+            });
+        } catch (error) {
+            console.log(error)
+            this.setState({
+                error,
+                isLoading: false
+            });
+        }
     }
 
     readyState = () => {
@@ -58,6 +96,12 @@ class Reactionbox extends Component {
     }
 
     resetTimer = () => {
+        const session = supabase.auth.session()
+        let username = session.user.user_metadata.full_name
+        let id = session.user.id
+        let { tries } = this.state
+
+
         this.setState({
             auto: false,
             ready: false,
@@ -65,10 +109,12 @@ class Reactionbox extends Component {
             reacted: false,
             previ: this.state.prev[this.state.prev.length - 1],
             disabled: false,
-            tries: this.state.tries += 1
+            tries: this.state.tries + 1
         })
 
         this.state.trys.push(this.state.tries)
+        console.log(username)
+        this.update({ id, username, timerDelt, tries })
     }
 
     render() {
@@ -83,8 +129,9 @@ class Reactionbox extends Component {
         let { auto } = this.state
         let { tries } = this.state
         let { trys } = this.state
+        let { timerDelt } = this.state
         let goTime = null
-        let timerDelt
+        // const { session } = this.props;
 
         if (go === true) {
             goTime = 'ready'
@@ -135,6 +182,7 @@ class Reactionbox extends Component {
                     </div>
 
                     {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, [...new Set(this.state.prev)], previ, trys, tries)}
+
                 </div>
                 <div className={test_chart_container}>
                     <div className={test_chart_wrapper}>
