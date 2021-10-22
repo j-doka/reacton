@@ -7,7 +7,7 @@
 }
 
 .button_highlight{
-    background-color: #4ec6cf;
+    background-color: #00c0ce;
     padding: 1rem 1.5rem;
     margin: 1.75rem auto;
     border-radius: 4px;
@@ -17,7 +17,7 @@
 }
 
 .button_highlight:hover{
-    background-color: #4ec6cfe3;
+    background-color: #00b8c5e3;
     transition: all 0.2s ease 0s;
 }
 
