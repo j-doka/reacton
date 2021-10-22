@@ -1,15 +1,19 @@
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
 import {
-    form_section,
-    input_container,
     container,
-    logBotton
+    logBotton,
+    disimage,
+    discordInfo,
+    callout
 } from "./Account.module.css"
 
 export default function Account({ session }) {
     const [loading, setLoading] = useState(true)
-    const [username, setUsername] = useState(null)
+    const [setUsername] = useState(null)
+
+    let username = session.user.user_metadata.full_name
 
     useEffect(() => {
         getProfile()
@@ -19,6 +23,7 @@ export default function Account({ session }) {
         try {
             setLoading(true)
             const user = supabase.auth.user()
+            console.log(user)
 
             let { data, error, status } = await supabase
                 .from('profiles')
@@ -31,32 +36,7 @@ export default function Account({ session }) {
             }
 
             if (data) {
-                setUsername(data.username)
-            }
-        } catch (error) {
-            alert(error.message)
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    async function updateProfile({ username }) {
-        try {
-            setLoading(true)
-            const user = supabase.auth.user()
-
-            const updates = {
-                id: user.id,
-                username,
-                updated_at: new Date(),
-            }
-
-            let { error } = await supabase.from('profiles').upsert(updates, {
-                returning: 'minimal', // Don't return the value after inserting
-            })
-
-            if (error) {
-                throw error
+                setUsername(username)
             }
         } catch (error) {
             alert(error.message)
@@ -67,24 +47,19 @@ export default function Account({ session }) {
 
     return (
         <div className={container}>
-            <div className={form_section}>
-                <label>Email</label>
-                <input 
-                    className={input_container} 
-                    type="text" 
-                    value={session.user.email} 
-                    disabled 
+            <p className={callout}>
+                Discord Account Linked!
+            </p>
+            <div className={discordInfo}>
+                <Image
+                    className={disimage}
+                    src={session.user.user_metadata.avatar_url}
+                    alt="Discord Avatar"
+                    height={80}
+                    width={80}
                 />
             </div>
-            <div className={form_section}>
-                <label>Name</label>
-                <input
-                    className={input_container}
-                    type="text"
-                    value={session.user.user_metadata.full_name}
-                    disabled
-                />
-            </div>
+            <p>{username}</p>
             <div>
                 <button className={logBotton} onClick={() => supabase.auth.signOut()}>
                     Sign Out
@@ -94,3 +69,6 @@ export default function Account({ session }) {
         </div>
     )
 }
+
+
+// how about we update profiles table with discord users.
