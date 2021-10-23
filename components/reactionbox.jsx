@@ -17,6 +17,7 @@ import {
     test_chart_wrapper,
 } from './reactionbox.module.css'
 import { Line } from 'react-chartjs-2';
+import { v4 as uuidv4 } from 'uuid';
 
 
 class Reactionbox extends Component {
@@ -39,14 +40,13 @@ class Reactionbox extends Component {
         users: null
     }
 
-    async update({id, username, timerDelt, tries}) {
+    async update({id, username, timerDelt}) {
 
         this.setState({ isLoading: true });
         let updates = {
             id,
             username,
             timerDelt,
-            tries,
             updated_at: new Date(),
         }
 
@@ -98,9 +98,8 @@ class Reactionbox extends Component {
     resetTimer = () => {
         const session = supabase.auth.session()
         let username = session.user.user_metadata.full_name
-        let id = session.user.id
-        let { tries } = this.state
-
+        let id = uuidv4()
+        let timerDelt = this.state.prev[this.state.prev.length - 1 ]
 
         this.setState({
             auto: false,
@@ -109,12 +108,12 @@ class Reactionbox extends Component {
             reacted: false,
             previ: this.state.prev[this.state.prev.length - 1],
             disabled: false,
-            tries: this.state.tries + 1
+            tries: this.state.tries + 1,
         })
 
         this.state.trys.push(this.state.tries)
-        console.log(username)
-        this.update({ id, username, timerDelt, tries })
+        console.log(username, id, timerDelt)
+        this.update({id, username, timerDelt})
     }
 
     render() {
@@ -181,7 +180,7 @@ class Reactionbox extends Component {
                         </button>
                     </div>
 
-                    {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, [...new Set(this.state.prev)], previ, trys, tries)}
+                    {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, timerDelt, [...new Set(this.state.prev)], previ, trys, tries)}
 
                 </div>
                 <div className={test_chart_container}>
