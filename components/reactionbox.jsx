@@ -97,23 +97,30 @@ class Reactionbox extends Component {
 
     resetTimer = () => {
         const session = supabase.auth.session()
-        let username = session.user.user_metadata.full_name
-        let id = uuidv4()
-        let timerDelt = this.state.prev[this.state.prev.length - 1 ]
 
         this.setState({
-            auto: false,
-            ready: false,
-            go: false,
-            reacted: false,
-            previ: this.state.prev[this.state.prev.length - 1],
-            disabled: false,
-            tries: this.state.tries + 1,
-        })
+                auto: false,
+                ready: false,
+                go: false,
+                reacted: false,
+                previ: this.state.prev[this.state.prev.length - 1],
+                disabled: false,
+                tries: this.state.tries + 1,
+            })
 
         this.state.trys.push(this.state.tries)
-        console.log(username, id, timerDelt)
-        this.update({id, username, timerDelt})
+
+        if (session){
+            let username = session.user.user_metadata.full_name
+            let id = uuidv4()
+            let timerDelt = this.state.prev[this.state.prev.length - 1]
+
+            console.log(session)
+            this.update({ id, username, timerDelt })
+        }
+        else {
+            return
+        } 
     }
 
     render() {
