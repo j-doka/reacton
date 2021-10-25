@@ -38,7 +38,7 @@ export default function Auth() {
                 </button>
             </div>
             <p className={callout}>
-                Link your Discord account to your Reacton.tech account to automatically be given a role every time you beat your personal best!
+                Link your Discord account to your Reacton.tech account! To save Your Score and get a New Personal Best!
             </p>
         </div>
     )
