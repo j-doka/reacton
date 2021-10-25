@@ -17,6 +17,13 @@
     width: 100%;
     align-items: center;
     flex-direction: column;
+
+    -webkit-animation: fadein 0.3s;
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .nav_container {
@@ -24,5 +31,29 @@
     min-height: 10rem;
 }
 
+.loading_bar{
+    background-color: #4ECF75;
+    height: 6px;
+    border-radius: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-animation: loading 1.2s ease-in-out 0s;
+}
 
+@keyframes loading{
+    0% {
+        width: 0;
+        left: 0;
+    }
 
+    50% {
+        width: calc(100% - 19px);
+        left: 0;
+    }
+
+    100% {
+        width: 0;
+        left: calc(100% - 19px);
+    }
+}

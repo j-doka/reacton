@@ -6,6 +6,13 @@
     margin: auto;
     position: relative;
     transition: all 0.2s ease 0s;
+
+    -webkit-animation: fadein 0.3s;
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .reac_container{
