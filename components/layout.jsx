@@ -4,7 +4,8 @@ import {
     container,
     highlight,
     nav_container,
-    title_style
+    title_style,
+    loading_bar
 } from './layout.module.css'
 
 const Layout = ({children, PageTitle}) => {
@@ -17,6 +18,7 @@ const Layout = ({children, PageTitle}) => {
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
             </Head>
             <div className={container}>
+                <div className={loading_bar}></div>
                 <h1 className={title_style}>{PageTitle}<span className={highlight}>{/* add styling to the .tech*/}.tech</span></h1>
                 <header className={nav_container}>
                     <nav>
