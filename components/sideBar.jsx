@@ -20,7 +20,6 @@ const Sidebar = () => {
 
     const menu = [
         { title: 'Test', path: '/' },
-        { title: 'About', path: '/about' },
         { title: Login, path: '/login' },
     ]
 
