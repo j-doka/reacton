@@ -34,12 +34,12 @@ const Sidebar = () => {
                                 className={router.pathname === item.path
                                     ? active
                                     : non_active
-                                    }
+                                }
                             >
                                 {item.title}
                             </a>
                         </Link>
-                    </li>  
+                    </li>
                 )
             })}
         </ul>

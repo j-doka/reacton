@@ -26,10 +26,17 @@
     to   { opacity: 1; }
 }
 
-.nav_container {
+.nav_container{
     margin-top: -1.25rem;
     min-height: 10rem;
 }
+
+.nav_block{
+    text-align: center;
+    display: block;
+    margin-right: 40px;
+}
+
 
 .loading_bar{
     background-color: #4ECF75;
