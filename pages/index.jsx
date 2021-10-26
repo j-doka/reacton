@@ -1,5 +1,5 @@
 import Layout from '../components/layout.jsx'
-import Reactionbox from '../components/Reactionbox.jsx'
+import Reactionbox from '../components/reactionbox.jsx'
 
 const IndexPage = () => {
   return (
