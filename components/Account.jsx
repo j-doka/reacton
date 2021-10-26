@@ -13,11 +13,7 @@ export default function Account({ session }) {
     const [loading, setLoading] = useState(true)
     const [setUsername] = useState(null)
 
-    let username = session.user.user_metadata.full_name
-
-    useEffect(() => {
-        getProfile()
-    }, [session])
+    
 
     async function getProfile() {
         try {
@@ -44,6 +40,12 @@ export default function Account({ session }) {
             setLoading(false)
         }
     }
+
+    let username = session.user.user_metadata.full_name
+
+    useEffect(() => {
+        getProfile()
+    }, [session])
 
     return (
         <div className={container}>
