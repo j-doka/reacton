@@ -5,7 +5,8 @@ import {
     highlight,
     nav_container,
     title_style,
-    loading_bar
+    loading_bar,
+    nav_block
 } from './layout.module.css'
 
 const Layout = ({children, PageTitle}) => {
@@ -21,7 +22,7 @@ const Layout = ({children, PageTitle}) => {
                 <div className={loading_bar}></div>
                 <h1 className={title_style}>{PageTitle}<span className={highlight}>{/* add styling to the .tech*/}.tech</span></h1>
                 <header className={nav_container}>
-                    <nav>
+                    <nav className={nav_block}>
                         {/* Add Links to each one (tick )*/}
                         <Sidebar>
                         </Sidebar>
