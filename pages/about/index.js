@@ -1,11 +1,20 @@
-import { useState, useEffect } from 'react'
-import { supabase } from '../../utils/supabaseClient'
 import Layout from '../../components/layout.jsx'
 
-let callout = {
-    textAlign: 'center',
-    maxWidth: '30rem',
+let announce = {
+    textAlign: 'left',
     padding: '1.5rem',
+    borderRadius: '4px',
+    backgroundColor: '#2a2a2a',
+}
+
+let active = {
+    color: 'orange'
+}
+
+let callout = {
+    textAlign: 'left',
+    padding: '1.5rem',
+    width: '51rem',
     borderRadius: '4px',
     backgroundColor: '#2a2a2a',
 
@@ -23,10 +32,18 @@ export default function About() {
     return (
         <Layout PageTitle="Reacton">
             <div style={container}>
+                <h3>
+                    How to Use!
+                </h3>
                 <div style={callout}>
                     <p>
+                        ⚫ - Start / ready <br/>
+                        🔴 - Get ready. <br/>
+                        🟢 - Click! <br/>
+                        🔵 - You should see your results underneath. <br/>
                     </p>
                 </div>
+                <p style={announce}>Look on my <a style={active} href='https://chukkyiii.tech/'>blog</a> for updates</p>
             </div>
             
         </Layout>
