@@ -21,7 +21,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 class Reactionbox extends Component {
-    state = {
+    constructor(props) {
+        super(props);
+        this.state = {
         prev: [],
         previ: false,
         timerOn: false,
@@ -35,9 +37,26 @@ class Reactionbox extends Component {
         reacted: false,
         trys: [],
         tries: 0,
-        setloading: false,
+        isloading: false,
         error: false,
-        users: null
+        users: null,
+        width: 0, 
+        height: 0 
+    };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+     this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     async update({id, username, timerDelt}) {
@@ -99,14 +118,14 @@ class Reactionbox extends Component {
         const session = supabase.auth.session()
 
         this.setState({
-                auto: false,
-                ready: false,
-                go: false,
-                reacted: false,
-                previ: this.state.prev[this.state.prev.length - 1],
-                disabled: false,
-                tries: this.state.tries + 1,
-            })
+            auto: false,
+            ready: false,
+            go: false,
+            reacted: false,
+            previ: this.state.prev[this.state.prev.length - 1],
+            disabled: false,
+            tries: this.state.tries + 1,
+        })
 
         this.state.trys.push(this.state.tries)
 
@@ -136,6 +155,7 @@ class Reactionbox extends Component {
         let { tries } = this.state
         let { trys } = this.state
         let { timerDelt } = this.state
+        let { width } = this.state
         let goTime = null
         // const { session } = this.props;
 
@@ -187,7 +207,7 @@ class Reactionbox extends Component {
                         </button>
                     </div>
 
-                    {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, timerDelt, [...new Set(this.state.prev)], previ, trys, tries)}
+                    {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, timerDelt, [...new Set(this.state.prev)], previ, trys, tries, )}
 
                 </div>
                 <div className={test_chart_container}>
@@ -219,4 +239,7 @@ class Reactionbox extends Component {
 export default Reactionbox
 
 
-/* chatJS */
+// /* chartJS */
+
+
+
