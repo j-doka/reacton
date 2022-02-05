@@ -1,12 +1,15 @@
 import * as React from 'react'
-import useWindowDimensions from '../hooks/useWindowDimensions';
+import useWindowDimensions from '../hooks/useWindowDirections';
 
 const Window = () => {
   const { height, width } = useWindowDimensions();
 
   return (
-    <div>
-      width: {width} ~ height: {height}
-    </div>
+    {
+      width,
+      height
+    }
   );
 }
+
+export default Window

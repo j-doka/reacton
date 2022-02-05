@@ -14,10 +14,10 @@ const Layout = ({children, PageTitle}) => {
         <main>
             <Head>
                 <title>{PageTitle}</title>
-                <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet"></link>
                 <link rel="shortcut icon" href="/favicon.svg" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
             </Head>
             <div className={container}>
                 <div className={loading_bar}></div>
