@@ -9,47 +9,9 @@ import {
     callout
 } from "./Account.module.css"
 
-export default function Account({ session}) {
-    const [loading, setLoading] = useState(true)
-    const [setUsername] = useState(null)
-    const [setTimes] = useState(null)
-
-    async function getProfile() {
-        try {
-            setLoading(true)
-            const user = supabase.auth.user()
-            
-
-            let { data, error, status } = await supabase
-                .from('profiles')
-                .select(`username`)
-                .select(`timerDelt`)
-                .eq('id', user.id)
-                .single()
-
-            if (error && status !== 406) {
-                throw error
-            }
-            
-            if (data) {
-                setUsername(username)
-            }
-        } catch (error) {
-            alert(error.message)
-        } finally {
-            setLoading(false)
-        }
-    }
-
+export default function Account({ session, times }) {
     let username = session.user.user_metadata.full_name
-
-    useEffect(() => {
-        getProfile()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [session])
-
-    
-
+    console.log({times})
     return (
         <div className={container}>
             <p className={callout}>
@@ -74,4 +36,19 @@ export default function Account({ session}) {
     )
 }
 
+export const getUserData = async () => {
+    const { data: times, error } = await supabase
+        .from("profiles")
+        .select('*')
+
+        if (error) {
+            console.log(error)
+        }
+    
+    return {
+        props: {
+            times
+        }
+    }
+}
 
