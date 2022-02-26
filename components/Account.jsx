@@ -9,28 +9,28 @@ import {
     callout
 } from "./Account.module.css"
 
-export default function Account({ session }) {
+export default function Account({ session}) {
     const [loading, setLoading] = useState(true)
     const [setUsername] = useState(null)
-
-    
+    const [setTimes] = useState(null)
 
     async function getProfile() {
         try {
             setLoading(true)
             const user = supabase.auth.user()
-            console.log(user)
+            
 
             let { data, error, status } = await supabase
                 .from('profiles')
                 .select(`username`)
+                .select(`timerDelt`)
                 .eq('id', user.id)
                 .single()
 
             if (error && status !== 406) {
                 throw error
             }
-
+            
             if (data) {
                 setUsername(username)
             }
@@ -45,7 +45,10 @@ export default function Account({ session }) {
 
     useEffect(() => {
         getProfile()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session])
+
+    
 
     return (
         <div className={container}>
@@ -66,11 +69,12 @@ export default function Account({ session }) {
                 <button className={logBotton} onClick={() => supabase.auth.signOut()}>
                     Sign Out
                 </button>
-                {console.log(session)}
             </div>
         </div>
     )
 }
+
+
 
 
 // how about we update profiles table with discord users.

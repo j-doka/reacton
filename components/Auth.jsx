@@ -17,7 +17,7 @@ export default function Auth() {
             })
             if (error) throw error
         } catch (error) {
-            // console.log(error.error_description || error.message)
+            console.log(error.error_description || error.message)
         } finally {
             setLoading(false)
         }
