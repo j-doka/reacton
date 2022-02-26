@@ -1,4 +1,5 @@
 import Layout from '../../components/layout.jsx'
+import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 let announce = {
     textAlign: 'left',
@@ -28,7 +29,6 @@ let container = {
     transition: 'all 0.2s ease 0s',
 }
 export default function About() {
-
     return (
         <Layout PageTitle="Reacton">
             <div style={container}>
@@ -45,7 +45,6 @@ export default function About() {
                 </div>
                 <p style={announce}>Look on my <a style={active} href='https://chukkyiii.tech/'>blog</a> for updates</p>
             </div>
-            
         </Layout>
     )
 }
