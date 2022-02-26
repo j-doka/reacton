@@ -75,6 +75,3 @@ export default function Account({ session}) {
 }
 
 
-
-
-// how about we update profiles table with discord users.
