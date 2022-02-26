@@ -135,7 +135,10 @@ class Reactionbox extends Component {
             let timerDelt = this.state.prev[this.state.prev.length - 1]
 
             console.log(session)
-            this.update({ id, username, timerDelt })
+            if (timerDelt != null){
+                this.update({ id, username, timerDelt })
+            }
+            
         }
         else {
             return
