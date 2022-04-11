@@ -1,5 +1,5 @@
 import Layout from '../../components/layout.jsx'
-import useWindowDimensions from '../../hooks/useWindowDimensions'
+
 
 let announce = {
     textAlign: 'left',
