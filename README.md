@@ -1,4 +1,4 @@
-# Contributing yes
+# Contributing
 
 Make sure to perform `npm install` before any else
 
