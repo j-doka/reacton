@@ -1,41 +1,13 @@
 import Layout from '../../components/layout.jsx'
-import useWindowDimensions from '../../hooks/useWindowDimensions'
 
-let announce = {
-    textAlign: 'left',
-    padding: '1.5rem',
-    borderRadius: '4px',
-    backgroundColor: '#2a2a2a',
-}
-
-let active = {
-    color: 'orange'
-}
-
-let callout = {
-    textAlign: 'left',
-    padding: '1.5rem',
-    width: '51rem',
-    borderRadius: '4px',
-    backgroundColor: '#2a2a2a',
-
-}
-
-let container = {
-    display: 'flex',
-    width: '100%',
-    alignItems: 'center',
-    flexDirection: 'column',
-    transition: 'all 0.2s ease 0s',
-}
 export default function About() {
     return (
         <Layout PageTitle="Reacton">
-            <div style={container}>
+            <div className='flex items-center flex-col'>
                 <h3>
                     How to Use!
                 </h3>
-                <div style={callout}>
+                <div className='text-left p-6 bg-[#2a2a2a] w-[51rem] rounded-md my-5'>
                     <p>
                         ⚫ - Start / ready <br/>
                         🔴 - Get ready. <br/>
@@ -43,7 +15,7 @@ export default function About() {
                         🔵 - You should see your results underneath. <br/>
                     </p>
                 </div>
-                <p style={announce}>Look on my <a style={active} href='https://jessedoka.co/blog'>blog</a> for updates</p>
+                <p className='bg-[#2a2a2a] p-6 rounded-md'>Look on my <a className="text-orange-400" href='https://jessedoka.co/blog'>blog</a> for updates</p>
             </div>
         </Layout>
     )

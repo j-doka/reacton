@@ -1,13 +1,5 @@
 import Head from 'next/head'
 import Sidebar from './sideBar'
-import {
-    container,
-    highlight,
-    nav_container,
-    title_style,
-    loading_bar,
-    nav_block
-} from './layout.module.css'
 
 const Layout = ({children, PageTitle}) => {
     return(
@@ -19,11 +11,11 @@ const Layout = ({children, PageTitle}) => {
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
             </Head>
-            <div className={container}>
-                <div className={loading_bar}></div>
-                <h1 className={title_style}>{PageTitle}<span className={highlight}>.tech</span></h1>
-                <header className={nav_container}>
-                    <nav className={nav_block}>
+            <div className="flex w-full items-center flex-col">
+                <div className="animate-loading bg-green-500 h-1.5 rounded-full fixed top-0 left-0"></div>
+                <h1 className="bg-[#2a2a2a] p-4 rounded-lg cursor-pointer font-medium text-3xl">{PageTitle}<span className="text-[#4ECF75]">.tech</span></h1>
+                <header className="mt-12">
+                    <nav>
                         {/* Add Links to each one (tick )*/}
                         <Sidebar>
                         </Sidebar>

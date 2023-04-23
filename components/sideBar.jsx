@@ -2,11 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { supabase } from '../utils/supabaseClient'
-import {
-    non_active,
-    active,
-    nav_links
-} from './sidebar.module.css'
 
 
 
@@ -26,15 +21,15 @@ const Sidebar = () => {
 
 
     return (
-        <ul className={nav_links}>
+        <ul className="flex gap-4">
             {menu.map((item, index) => {
                 return (
                     <li key={index}>
                         <Link href={item.path}>
                             <a
                                 className={router.pathname === item.path
-                                    ? active
-                                    : non_active
+                                    ? "bg-[#2a2a2a] text-white block px-3 py-2 rounded-md text-base"
+                                    : "text-gray-300 hover:bg-[#2a2a2a] hover:text-white block px-3 py-2 rounded-md text-base ease-in-out duration-500"
                                 }
                             >
                                 {item.title}

@@ -3,19 +3,6 @@ import { Component } from 'react'
 import Lightning from '../public/icons8-lightning-bolt-96.png'
 import Refresh from '../public/icons8-refresh-480.png'
 import { supabase } from '../utils/supabaseClient'
-import {
-    test_container,
-    reac_container,
-    test_bar,
-    bar_item,
-    reset_button,
-    readyState,
-    goState,
-    blueState,
-    chart,
-    test_chart_container,
-    test_chart_wrapper,
-} from './reactionbox.module.css'
 import { Line } from 'react-chartjs-2';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -158,7 +145,6 @@ class Reactionbox extends Component {
         let { tries } = this.state
         let { trys } = this.state
         let { timerDelt } = this.state
-        let { width } = this.state
         let goTime = null
         // const { session } = this.props;
 
@@ -192,30 +178,29 @@ class Reactionbox extends Component {
 
         return (
             <div>
-                <div className={test_container}>
-                    <button disabled={disabled} id={goTime} className={reacted === true ? blueState : go === true ? goState : ready === true ? readyState : reac_container} onClick={go === true ? this.stopTimer : this.readyState} >
-                        {reacted || go || auto || ready == true ? '' : <Image src={Lightning} alt="Lightning Symbol" />}
+                <div className="flex items-center flex-col">
+                    <button disabled={disabled} id={goTime} className={reacted === true ? "bg-[#4ec6cf] w-[50rem] h-[32rem] rounded-md" : go === true ? "bg-[#4ecf68] w-[50rem] h-[32rem] rounded-md" : ready === true ? "bg-[#cf4e4e] w-[50rem] h-[32rem] rounded-md" : "bg-[#2a2a2a] w-[50rem] h-[32rem] rounded-md"} onClick={go === true ? this.stopTimer : this.readyState} >
+                        {
+                            reacted || go || auto || ready == true ? '' : <Image className="hover:animate-wiggle" src={Lightning} alt="Lightning Symbol" />}
                     </button>
-                    <div className={test_bar}>
-                        <div className={bar_item}>
+                    <div className="flex m-5 gap-10">
+                        <div className="bg-[#2a2a2a] rounded-md h-[4rem] w-[15rem] flex items-center justify-center">
                             {previ ? previ + 'ms' : '-'}
                         </div>
-                        <div className={bar_item} >
+                        <div className="bg-[#2a2a2a] rounded-md h-[4rem] w-[15rem] flex items-center justify-center">
                             <div>
                                 {reacted === true ? timerDelt + 'ms' : '-'}
                             </div>
                         </div>
-                        <button className={reset_button} onClick={this.resetTimer}>
+                        <button className="w-[15rem] h-[4rem] bg-[#2a2a2a] rounded-md hover:bg-sky-500 ease-in-out duration-300" onClick={this.resetTimer}>
                             <Image width={30} height={30} src={Refresh} alt="Refresh Symbol" />
                         </button>
                     </div>
-
-                    {console.log(ready, go, goTime, auto, reacted, timerStart, timerEnd, timerDelt, [...new Set(this.state.prev)], previ, trys, tries, )}
-
                 </div>
-                <div className={test_chart_container}>
-                    <div className={test_chart_wrapper}>
-                        <div className={chart}>
+
+                <div>
+                    <div>
+                        <div className="w-1/2 mx-auto pt-4">
                             <Line
                                 data={state}
                                 options={{

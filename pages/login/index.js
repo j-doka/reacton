@@ -17,7 +17,7 @@ export default function Home() {
 
     return (
         <Layout PageTitle='Reacton'>
-            <div className="container" style={{ padding: '50px 0 100px 0' }}>
+            <div className="flex flex-col items-center justify-center  text-center">
                 {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
             </div>
         </Layout>
