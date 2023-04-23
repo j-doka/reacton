@@ -21,7 +21,7 @@ const Layout = ({children, PageTitle}) => {
             </Head>
             <div className={container}>
                 <div className={loading_bar}></div>
-                <h1 className={title_style}>{PageTitle}<span className={highlight}>{/* add styling to the .tech*/}.tech</span></h1>
+                <h1 className={title_style}>{PageTitle}<span className={highlight}>.tech</span></h1>
                 <header className={nav_container}>
                     <nav className={nav_block}>
                         {/* Add Links to each one (tick )*/}

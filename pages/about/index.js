@@ -43,7 +43,7 @@ export default function About() {
                         🔵 - You should see your results underneath. <br/>
                     </p>
                 </div>
-                <p style={announce}>Look on my <a style={active} href='https://chukkyiii.tech/'>blog</a> for updates</p>
+                <p style={announce}>Look on my <a style={active} href='https://jessedoka.co/blog'>blog</a> for updates</p>
             </div>
         </Layout>
     )
