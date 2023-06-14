@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root{
   --bg-colour: #242424;
@@ -20,7 +20,6 @@ html {
 body {
   margin: 0px;
   font-family: 'Rubik', sans-serif;
-  font-weight: 500;
   background-color: var(--bg-colour);
   animation: fadein 0.3s;
 }
@@ -51,7 +50,6 @@ h4,
 h5,
 h6 {
   font-size: inherit;
-  font-weight: inherit;
 }
 
 li, a {

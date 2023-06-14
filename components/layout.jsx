@@ -6,10 +6,7 @@ const Layout = ({children, PageTitle}) => {
         <main>
             <Head>
                 <title>{PageTitle}</title>
-                <link rel="shortcut icon" href="/favicon.svg" />
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
+                <link rel="logo" href="/favicon.svg" />
             </Head>
             <div className="flex w-full items-center flex-col">
                 <div className="animate-loading bg-green-500 h-1.5 rounded-full fixed top-0 left-0"></div>
