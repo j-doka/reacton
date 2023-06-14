@@ -1,7 +1,40 @@
-# Contributing
+# Reacton
 
-Make sure to perform `npm install` before any else
+Welcome to Reacton, a React based web application that measures and tests your reaction time. It provides a simple and easy to use interface that allows you to condct reaction time tests and view your results and gather analytics.
+## Table of Contents
 
-Then run `yarn dev` to start the main project.
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [License](#license)
 
-[site on codesandbox](https://codesandbox.io/p/github/chukkyiii/reacton/reacton?file=%2F.codesandbox%2Ftasks.json&selection=%5B%7B%22endColumn%22%3A47%2C%22endLineNumber%22%3A167%2C%22startColumn%22%3A47%2C%22startLineNumber%22%3A167%7D%5D&workspace=%257B%2522activeFileId%2522%253A%2522clc0z99ji001i7pi7d8d93yr8%2522%252C%2522openFiles%2522%253A%255B%2522%252FREADME.md%2522%252C%2522%252Fcomponents%252FsideBar.jsx%2522%252C%2522%252Fcomponents%252Freactionbox.jsx%2522%255D%252C%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522gitSidebarPanel%2522%253A%2522COMMIT%2522%252C%2522spaces%2522%253A%257B%2522clc0z91yv043s356g3psauzxl%2522%253A%257B%2522devtools%2522%253A%255B%257B%2522type%2522%253A%2522PREVIEW%2522%252C%2522taskId%2522%253A%2522dev%2522%252C%2522port%2522%253A3000%252C%2522key%2522%253A%2522clc0zc13p05m8356gdgwqe12k%2522%252C%2522isMinimized%2522%253Afalse%257D%252C%257B%2522type%2522%253A%2522TASK_LOG%2522%252C%2522taskId%2522%253A%2522dev%2522%252C%2522key%2522%253A%2522clc0zbz0v05h9356gol7u4ij0%2522%252C%2522isMinimized%2522%253Afalse%257D%255D%252C%2522key%2522%253A%2522clc0z91yv043s356g3psauzxl%2522%252C%2522name%2522%253A%2522Default%2522%257D%257D%252C%2522currentSpace%2522%253A%2522clc0z91yv043s356g3psauzxl%2522%252C%2522spacesOrder%2522%253A%255B%2522clc0z91yv043s356g3psauzxl%2522%255D%257D)
+### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+* You have installed the latest version of `Node.js` (version 14.15.4 or higher) 
+* You have installed `yarn` (version 1.22.10 or higher).
+* You have a `Windows/Linux/Mac` machine.
+
+## Installation
+
+1. Clone the repository to your local machine
+2. Navigate to the root directory of the project
+3. Run `yarn install` to install the dependencies
+4. Run `yarn dev` to start development server
+5. Navigate to `localhost:3000` in your browser to view the application
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+Feel free to open an issue or submit a pull request for any changes you would like to see. For major changes, please open an issue first to discuss what you would like to see changed.
+
+## License
+
+[MIT](LICENSE)
+
+
+
+
+
+
+
