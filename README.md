@@ -1,4 +1,5 @@
-# Reacton
+# Reacton 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/74804c15-62e1-43c2-896c-13ac3ceedcd2/deploy-status)](https://app.netlify.com/sites/reactontech/deploys)
 
 Welcome to Reacton, a React based web application that measures and tests your reaction time. It provides a simple and easy to use interface that allows you to condct reaction time tests and view your results and gather analytics.
 ## Table of Contents
@@ -31,7 +32,6 @@ Feel free to open an issue or submit a pull request for any changes you would li
 ## License
 
 [MIT](LICENSE)
-
 
 
 
