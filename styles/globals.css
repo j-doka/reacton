@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap'); */
-
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+  font-family: 'Rubik', sans-serif;
+}
 
 :root{
   --bg-colour: #242424;
@@ -21,7 +23,6 @@ html {
 
 body {
   margin: 0px;
-  font-family: 'Rubik', sans-serif;
   background-color: var(--bg-colour);
   animation: fadein 0.3s;
 }
