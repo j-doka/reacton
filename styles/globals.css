@@ -4,10 +4,7 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap'); */
 
-@font-face {
-  font-family: 'Rubik', sans-serif;
-  src: url(/public/font/Rubik-VariableFont_wght.ttf)
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root{
   --bg-colour: #242424;
@@ -55,6 +52,7 @@ h4,
 h5,
 h6 {
   font-size: inherit;
+  font-family: 'Rubik', sans-serif;
 }
 
 li, a {
